@@ -1,3 +1,11 @@
 .dropdown-toogle, .dropdown-item {
   cursor: pointer;
 }
+
+.main-text-color {
+  color: #18bc9c;
+}
+
+.dropdown-item:hover{
+  background-color: #18bc9c;
+}
