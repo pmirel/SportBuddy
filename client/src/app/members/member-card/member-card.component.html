@@ -1,0 +1,22 @@
+<div class="card shadow mb-2 mt-4">
+  <div class="card-img-wrapper">
+    <img src="{{member.photoUrl || './assets/user.png'}}" alt="{{member.nickName}}" class="card-img-top">
+  </div>
+  <div class="card-body bg-light">
+    <h6 class="card-title text-left"><i class="fa fa-user-o "></i>
+      {{member.nickName}}</h6>
+    <h6 class="card-text text-muted text-left"><i class="fa fa-futbol-o" aria-hidden="true"></i>
+      {{member.sport | titlecase}}</h6>
+    <h6 class="card-text text-muted text-left"><i class="fa fa-building "></i>
+      {{member.city}}</h6>
+    <h6 class="card-text text-muted text-left"><i class="fa fa-info-circle mr-1" aria-hidden="true"></i>
+      <a href="" routerLink='/members/{{member.username}}'>More info</a>
+    </h6>
+
+
+  </div>
+  <div class="card-footer bg-dark container">
+    <a href="#" class="btn btn-primary col-12 mb-1">Challenge</a>
+    <a href="#" class="btn btn-primary col-12">Message</a>
+  </div>
+</div>
