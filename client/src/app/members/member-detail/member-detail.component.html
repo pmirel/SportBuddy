@@ -1,6 +1,8 @@
 <div class="container  row mt-4" *ngIf="member">
   <div class="col-4">
     <img src="{{member.photoUrl || './assets/user.png'}}" class="img-fluid rounded" alt="user image">
+    <a href="#" class="btn btn-primary col-12 mt-1 p-0 main-green-color">Challenge</a>
+    <a href="#" class="btn btn-primary col-12 mt-1 p-0">Message</a>
   </div>
   <div class="col-8">
     <h1>{{member.nickName}}</h1>
@@ -11,13 +13,5 @@
     <h6><strong>Experience playing: </strong>{{member.experience}}</h6>
     <h6><strong>Last time active: </strong>{{member.lastActive}}</h6>
     <h6><strong>User since: </strong>{{member.created}}</h6>
-  </div>
-</div>
-<div class="container row mt-4">
-  <div class="col-6">
-    <a href="#" class="btn btn-primary col-12 mb-1">Challenge</a>
-  </div>
-  <div class="col-6">
-    <a href="#" class="btn btn-primary col-12 mb-1">Message</a>
   </div>
 </div>

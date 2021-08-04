@@ -1,0 +1,52 @@
+<div class="row mt-4" *ngIf="member">
+
+  <div class="col-4">
+    <h3>Your profile</h3>
+    <div class="">
+      <img src="{{member.photoUrl || './assets/user.png'}}" class="img-fluid rounded" alt="user image">
+    </div>
+    <div>
+      <h1>{{member.nickName}}</h1>
+      <h6><strong>Gender: </strong>{{member.gender}}</h6>
+      <h6><strong>Age: </strong>{{member.age}}</h6>
+      <h6><strong>Last time active: </strong>{{member.lastActive}}</h6>
+      <h6><strong>User since: </strong>{{member.created}}</h6>
+      <h6><strong>Location: </strong>{{member.city}},{{member.country}}</h6>
+      <h6><strong>Sport played: </strong>{{member.sport}}</h6>
+      <h6><strong>Experience playing: </strong>{{member.experience}}</h6>
+    </div>
+    <div class="mt-4">
+      <button [disabled]="!editForm.dirty" form="editForm" type="submit" class="btn btn-primary col-12 mb-1">Save
+        changes</button>
+    </div>
+  </div>
+
+
+
+  <div class="col-8">
+    <div class="alert alert-info" *ngIf="editForm.dirty">
+      <strong>Info:</strong> You have changes. Unsaved changes will be lost
+    </div>
+
+
+    <form #editForm="ngForm" (ngSubmit)="updateMember()" id="editForm">
+      <div class="form">
+        <label for="city">City:</label>
+        <input [(ngModel)]="member.city" type="text" name="city" class="form-control">
+        <label for="country">Coutry:</label>
+        <input [(ngModel)]="member.country" type="text" name="country" class="form-control">
+        <label for="sport">Sport plyed:</label>
+        <input [(ngModel)]="member.sport" type="text" name="sport" class="form-control">
+        <label for="experience">Experience:</label>
+        <input [(ngModel)]="member.experience" type="number" name="experience" class="form-control">
+      </div>
+    </form>
+  </div>
+
+
+  <div class="conatiner">
+    <h4>edit photos goes here</h4>
+  </div>
+
+
+</div>

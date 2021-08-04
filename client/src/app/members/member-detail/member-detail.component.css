@@ -3,3 +3,11 @@
   
   height: 18rem;
 }
+
+.main-green-color {
+  background-color: #18bc9c;
+}
+
+.main-green-color:hover {
+  background-color: #1ff3c9;
+}
