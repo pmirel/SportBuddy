@@ -9,3 +9,9 @@
 .dropdown-item:hover{
   background-color: #18bc9c;
 }
+
+img {
+  max-height: 30px;
+  display: inline;
+  border-radius: 5px;
+}

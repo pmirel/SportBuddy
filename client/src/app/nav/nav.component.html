@@ -27,10 +27,13 @@
     </div>
 
 
-    <div class="nav-item dropdown " *ngIf="(accountService.currentUser$ | async) as user" dropdown>
+    <div class="nav-item dropdown" *ngIf="(accountService.currentUser$ | async) as user" dropdown>
+
       <button class="btn btn-secondary dropdown-toggle " type="button" id="dropdownMenuButton" data-toggle="dropdown"
         aria-haspopup="true" aria-expanded="false">
+        <img class="mr-1" src="{{user.photoUrl}}" alt="user photo">
         Welcome {{user.username | titlecase}}
+
       </button>
       <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
         <a routerLink='/member/edit' class="dropdown-item">Edit profile</a>
