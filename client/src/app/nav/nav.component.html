@@ -31,7 +31,7 @@
 
       <button class="btn btn-secondary dropdown-toggle " type="button" id="dropdownMenuButton" data-toggle="dropdown"
         aria-haspopup="true" aria-expanded="false">
-        <img class="mr-1" src="{{user.photoUrl}}" alt="user photo">
+        <img class="mr-1" src="{{user.photoUrl || './assets/user.png'}}" alt="user photo">
         Welcome {{user.username | titlecase}}
 
       </button>
