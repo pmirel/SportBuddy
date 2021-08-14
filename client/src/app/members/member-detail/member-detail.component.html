@@ -11,7 +11,7 @@
     <h6><strong>Age: </strong>{{member.age}}</h6>
     <h6><strong>Sport played: </strong>{{member.sport}}</h6>
     <h6><strong>Experience playing: </strong>{{member.experience}}</h6>
-    <h6><strong>Last time active: </strong>{{member.lastActive}}</h6>
-    <h6><strong>User since: </strong>{{member.created}}</h6>
+    <h6><strong>Last time active: </strong>{{member.lastActive | timeago}}</h6>
+    <h6><strong>User since: </strong>{{member.created | date}}</h6>
   </div>
 </div>

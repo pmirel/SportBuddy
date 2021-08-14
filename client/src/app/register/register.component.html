@@ -12,9 +12,6 @@
     <label class="radio-inline mr-2">
       <input type="radio" value="female" formControlName='gender'>Female
     </label>
-    <label class="radio-inline mr-2">
-      <input type="radio" value="other" formControlName='gender'>Other
-    </label>
   </div>
   <app-text-input [formControl]='registerForm.controls["username"]' [label]='"Username"'></app-text-input>
   <app-date-input [formControl]='registerForm.controls["dateOfBirth"]' [label]='"Date Of Birth"' [maxDate]='maxDate'>

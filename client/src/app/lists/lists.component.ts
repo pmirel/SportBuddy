@@ -18,14 +18,14 @@ export class ListsComponent implements OnInit {
   constructor(private memberService: MembersService) { }
 
   ngOnInit(): void {
-    this.loadMembers();
+    // this.loadMembers();
   }
 
-  loadMembers() {
-    this.memberService.getMembers(this.pageNumber, this.pageSize).subscribe(response => {
-      this.members = response.result;
-      this.pagination = response.pagination;
-    })
-  }
+  // loadMembers() {
+  //   this.memberService.getMembers(this.pageNumber, this.pageSize).subscribe(response => {
+  //     this.members = response.result;
+  //     this.pagination = response.pagination;
+  //   })
+  // }
 
 }
