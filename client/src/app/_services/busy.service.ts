@@ -8,15 +8,7 @@ export class BusyService {
   busyRequestCount = 0;
   constructor(private spinnerService: NgxSpinnerService) { }
 
-  // ngOnInit() {
-  //   /** spinner starts on init */
-  //   this.spinnerService.show();
 
-  //   setTimeout(() => {
-  //     /** spinner ends after 5 seconds */
-  //     this.spinnerService.hide();
-  //   }, 5000);
-  // }
 
   busy() {
     this.busyRequestCount++;
@@ -35,7 +27,6 @@ export class BusyService {
       setTimeout(() => {
         this.spinnerService.hide();
       }, 0);
-      // this.spinnerService.hide;
     }
   }
 }
