@@ -74,7 +74,7 @@ namespace API.Controllers
       var username = User.GetUsername();
       var message = await _messageRepository.GetMessage(id);
       if (message.Sender.UserName != username && message.Recipient.UserName != username)
-        return Unauthorized("asdfdsaf");
+        return Unauthorized();
 
       if (message.Sender.UserName == username) message.SenderDeleted = true;
       if (message.Recipient.UserName == username) message.RecipientDeleted = true;

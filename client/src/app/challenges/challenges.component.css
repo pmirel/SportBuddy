@@ -1,0 +1,12 @@
+.rounded{
+  max-height: 40px;
+}
+.btn-danger {
+  color: black;
+
+}
+
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
+  background-color: #18bc9c;
+  
+}

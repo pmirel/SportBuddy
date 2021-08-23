@@ -1,0 +1,54 @@
+<div class="row mb-4 mt-2">
+  <div class="btn-group" name='container'>
+    <button class="btn btn-primary" btnRadio='New' [(ngModel)]="container" (click)="loadChallenges()">New</button>
+    <button class="btn btn-primary" btnRadio='Received' [(ngModel)]="container"
+      (click)="loadChallenges()">Received</button>
+    <button class="btn btn-primary" btnRadio='Sent' [(ngModel)]="container" (click)="loadChallenges()">Sent</button>
+  </div>
+</div>
+
+<div class="row" *ngIf="challenges?.length === 0">
+  <h3>You have no challenges</h3>
+</div>
+
+<div class="row" *ngIf="challenges?.length > 0">
+  <table class="table table-hover">
+    <tr>
+      <th style="width: 2%">Id</th>
+      <th style="width: 10%">Location</th>
+      <th style="width: 10%">Sport</th>
+      <th style="width: 20%">Date of event</th>
+      <th style="width: 20%">From / To</th>
+      <th style="width: 10%">Sent / Received</th>
+      <th style="width: 30%">Answer </th>
+    </tr>
+    <tr [hidden]="loading" *ngFor="let challenge of challenges" (click)="onSelect(challenge)">
+
+      <td>{{challenge.id}}</td>
+      <td>{{challenge.location}}</td>
+      <td>{{challenge.sport}}</td>
+      <td>{{challenge.eventDate | date:'dd/MM/yyyy hh:mm a'}}</td>
+      <td
+        routerLink='{{container === "Outbox" ? "/members/" + challenge.recipientUsername : "/members/" + challenge.senderUsername}}'
+        style="cursor: pointer;">
+        <div *ngIf="container === 'Outbox'">
+          <img class="rounded mr-2" src="{{challenge.recipientPhotoUrl || './assests/user.png'}}"
+            alt="{{challenge.recipientUsername}}">
+          <strong>{{challenge.recipientUsername | titlecase}}</strong>
+
+        </div>
+        <div *ngIf="container !== 'Outbox'">
+          <img class="rounded mr-2" src="{{challenge.senderPhotoUrl || './assests/user.png'}}"
+            alt="{{challenge.senderUsername}}">
+          <strong>{{challenge.senderUsername | titlecase}}</strong>
+
+        </div>
+      </td>
+      <td>{{challenge.challengeSent | timeago}}</td>
+      <td *ngIf="challenge.answer === null">Null</td>
+      <td *ngIf="challenge.answer === true">True</td>
+      <td *ngIf="challenge.answer === false">False</td>
+    </tr>
+
+  </table>
+</div>

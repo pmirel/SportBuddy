@@ -24,5 +24,7 @@ namespace API.Entities
     public ICollection<Message> MessagesSent { get; set; }
     public ICollection<Message> MessagesReceived { get; set; }
 
+    public ICollection<Challenge> ChallengesSent { get; set; }
+    public ICollection<Challenge> ChallengesReceived { get; set; }
   }
 }

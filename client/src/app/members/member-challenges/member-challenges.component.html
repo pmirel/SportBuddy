@@ -1,0 +1,55 @@
+<h3>Challenges</h3>
+<hr>
+
+<div class="card">
+  <div class="card-body">
+    <form #challengeForm="ngForm" (ngSubmit)="sendChallenge()" autocomplete="off">
+      <div class="input-group">
+        <input name="challengeLocation" required [(ngModel)]="challengeLocation" type="text"
+          class="form-control input-sm" placeholder="Location">
+        <input name="challengeSport" [(ngModel)]="challengeSport" required type="text" class="form-control input-sm"
+          placeholder="Sport">
+        <input name="challengeEventDate" required [(ngModel)]="challengeEventDate" type="datetime-local"
+          class="form-control input-sm" placeholder="Date">
+        <div class="input-group-append">
+          <button [disabled]="!challengeForm.valid" class="btn btn-primary" type="submit">Challenge
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+</div>
+<div class="card">
+  <div class="card-body">
+    <div *ngIf="challenges?.length === 0">
+      No challenges yet... challenge this user!
+    </div>
+    <div class="container">
+      <div class="row align-items-center">
+        <p class="col">User</p>
+        <p class="col">Location</p>
+        <p class="col">Sport</p>
+        <p class="col-4">Date of Event</p>
+        <p class="col">Request sent</p>
+      </div>
+    </div>
+    <ul *ngIf="challenges?.length > 0" class="list-group">
+      <li *ngFor="let challenge of challenges" class="list-group-item">
+        <div class="container">
+          <div class="row align-items-center">
+            <span class="col">
+              <img class="rounded-circle" src="{{challenge.senderPhotoUrl || './assets/user.png'}}"
+                alt="{{challenge.senderUsername}}">
+            </span>
+            <p class="col">{{challenge.location}}</p>
+            <p class="col">{{challenge.sport}}</p>
+            <p class="col-4">{{challenge.eventDate | date:'dd/MM/yyyy hh:mm a'}}</p>
+            <p class="col"><span class="fa fa-clock-o">{{challenge.challengeSent | timeago}}</span></p>
+
+          </div>
+
+        </div>
+      </li>
+    </ul>
+  </div>

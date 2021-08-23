@@ -12,11 +12,14 @@
 
   </div>
 
-
   <div class="col-8">
-    <div>
-      <app-member-messages [messages]="messages" [username]="member.username"></app-member-messages>
-    </div>
+    <app-member-messages [messages]="messages" [username]="member.username"></app-member-messages>
+
   </div>
+
+  <div class="col-12">
+    <app-member-challenges [challenges]="challenges" [username]="member.username"></app-member-challenges>
+  </div>
+
 
 </div>

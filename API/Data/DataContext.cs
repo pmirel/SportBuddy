@@ -12,6 +12,7 @@ namespace API.Data
     }
     public DbSet<AppUser> Users { get; set; }
     public DbSet<Message> Messages { get; set; }
+    public DbSet<Challenge> Challenges { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
@@ -24,6 +25,18 @@ namespace API.Data
       .HasOne(u => u.Sender)
       .WithMany(m => m.MessagesSent)
       .OnDelete(DeleteBehavior.Restrict);
+
+      builder.Entity<Challenge>()
+      .HasOne(u => u.Recipient)
+      .WithMany(c => c.ChallengesReceived)
+      .OnDelete(DeleteBehavior.Restrict);
+
+      builder.Entity<Challenge>()
+      .HasOne(u => u.Sender)
+      .WithMany(c => c.ChallengesSent)
+      .OnDelete(DeleteBehavior.Restrict);
+
+
     }
 
   }
