@@ -71,6 +71,8 @@ namespace API.Controllers
 
       return Ok(await _challengeRepository.GetChallengeThread(currentUsername, username));
     }
+
+    //to check this
     [HttpPut]
     public async Task<ActionResult> UpdateChallenge(ChallengeUpdateDto challengeUpdateDto, int id)
     {

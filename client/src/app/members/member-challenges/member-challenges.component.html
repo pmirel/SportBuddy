@@ -3,14 +3,15 @@
 
 <div class="card">
   <div class="card-body">
-    <form #challengeForm="ngForm" (ngSubmit)="sendChallenge()" autocomplete="off">
+    <form #challengeForm="ngForm" (ngSubmit)="sendChallenge()" autocomplete="off" novalidate>
       <div class="input-group">
         <input name="challengeLocation" required [(ngModel)]="challengeLocation" type="text"
           class="form-control input-sm" placeholder="Location">
         <input name="challengeSport" [(ngModel)]="challengeSport" required type="text" class="form-control input-sm"
           placeholder="Sport">
-        <input name="challengeEventDate" required [(ngModel)]="challengeEventDate" type="datetime-local"
-          class="form-control input-sm" placeholder="Date">
+        <input id="daTi" name="challengeEventDate" required [(ngModel)]="challengeEventDate" type="datetime-local"
+        min="2021-08-17T14:30"
+          class="form-control input-sm">
         <div class="input-group-append">
           <button [disabled]="!challengeForm.valid" class="btn btn-primary" type="submit">Challenge
           </button>

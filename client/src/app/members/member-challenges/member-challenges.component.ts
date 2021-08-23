@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { moment, MomentAll } from 'ngx-bootstrap/chronos/test/chain';
 import { Challenge } from 'src/app/_models/challenge';
 import { ChallengeService } from 'src/app/_services/challenge.service';
 
@@ -15,13 +16,17 @@ export class MemberChallengesComponent implements OnInit {
   @Input() username: string;
   challenges: Challenge[];
   challengeLocation: string;
-  challengeSport:string;
+  challengeSport: string;
   challengeEventDate: Date;
+
 
   constructor(private challengeService: ChallengeService) { }
 
   ngOnInit(): void {
     this.loadChallenges();
+    let minDateStr = new Date().toISOString();
+    minDateStr = minDateStr.slice(0, 16);
+    document.getElementById("daTi").setAttribute("min", minDateStr);
   }
 
   loadChallenges() {
@@ -32,10 +37,10 @@ export class MemberChallengesComponent implements OnInit {
 
   sendChallenge() {
     this.challengeService.sendChallenge(this.username, this.challengeLocation, this.challengeSport, this.challengeEventDate)
-    .subscribe(challenge => {
-      this.challenges.push(challenge);
-      this.challengeForm.reset();
-    })
+      .subscribe(challenge => {
+        this.challenges.push(challenge);
+        this.challengeForm.reset();
+      })
   }
 
 }

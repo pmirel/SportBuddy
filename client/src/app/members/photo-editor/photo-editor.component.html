@@ -1,4 +1,3 @@
-<h1 class="text-center">Photo management</h1>
 <div class="row">
   <div class="col-2" *ngFor="let photo of member.photos">
     <img src="{{photo.url}}" alt="user photo" class="img-thumbnail p-1">
@@ -24,11 +23,6 @@
       [uploader]="uploader" class="well my-drop-zone" class="card bg-fadeded p-3 text-center mb-3  my-drop-zone">
       Drop photos here
     </div>
-
-    Multiple
-    <input type="file" ng2FileSelect [uploader]="uploader" multiple /><br />
-
-    Single
     <input type="file" ng2FileSelect [uploader]="uploader" />
   </div>
   <!-- upload queue -->

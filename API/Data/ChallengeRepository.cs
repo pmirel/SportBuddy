@@ -40,8 +40,8 @@ namespace API.Data
 
       query = challengeParams.Container switch
       {
-        "Received" => query.Where(u => u.Recipient.UserName == challengeParams.Username && u.Answer != null),
-        "Sent" => query.Where(u => u.Sender.UserName == challengeParams.Username && u.Answer != null),
+        "Received" => query.Where(u => u.Recipient.UserName == challengeParams.Username),
+        "Sent" => query.Where(u => u.Sender.UserName == challengeParams.Username),
         _ => query.Where(u => u.Recipient.UserName == challengeParams.Username && u.Answer == null)
       };
 
@@ -61,7 +61,7 @@ namespace API.Data
           || c.Recipient.UserName == recipientUsername
            && c.Sender.UserName == currentUsername
       )
-      .OrderBy(c => c.ChallengeSent)
+      .OrderByDescending(c => c.ChallengeSent)
       .ToListAsync();
 
       var newChallenges = challenges.Where(c => c.Answer == null && c.Recipient.UserName == currentUsername).ToList();
@@ -74,6 +74,8 @@ namespace API.Data
       return await _context.SaveChangesAsync() > 0;
     }
 
+
+    //to update
     public void UpdateChallenge(Challenge challenge)
     {
       _context.Entry(challenge).State = EntityState.Modified;
