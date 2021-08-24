@@ -26,6 +26,11 @@ namespace API.Data
       _context.Challenges.Add(challenge);
     }
 
+    public void DeleteChallenge(Challenge challenge)
+    {
+      _context.Challenges.Remove(challenge);
+    }
+
 
     public async Task<Challenge> GetChallenge(int id)
     {

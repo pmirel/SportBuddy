@@ -9,6 +9,7 @@ namespace API.Interfaces
   public interface IChallengeRepository
   {
     void AddChallenge(Challenge challenge);
+    void DeleteChallenge(Challenge challenge);
     void UpdateChallenge(Challenge challenge);
     Task<Challenge> GetChallenge(int id);
     Task<PagedList<ChallengeDto>> GetChallengesForUser(ChallengeParams challengeParams);

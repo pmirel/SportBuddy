@@ -39,4 +39,9 @@ export class ChallengeService {
     return this.http.put(this.baseUrl + 'challenges/' + id, challenge);
   }
 
+  
+  deleteChallenge(id: number) {
+    return this.http.delete(this.baseUrl + 'challenges/' + id);
+  }
+
 }

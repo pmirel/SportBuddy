@@ -57,6 +57,12 @@ export class ChallengesComponent implements OnInit {
     })
   }
 
+  deleteChallenge(id: number) {
+    this.challengeService.deleteChallenge(id).subscribe(() => {
+      this.challenges.splice(this.challenges.findIndex(m => m.id === id), 1);
+    })
+  }
+
 
 
 }

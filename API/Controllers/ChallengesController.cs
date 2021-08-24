@@ -91,6 +91,20 @@ namespace API.Controllers
       return BadRequest("Failed to update challenge");
     }
 
+[HttpDelete("{id}")]
+    public async Task<ActionResult> DeleteChallenge(int id)
+    {
 
+      var username = User.GetUsername();
+      var challenge = await _challengeRepository.GetChallenge(id);
+      if (challenge.Sender.UserName != username && challenge.Recipient.UserName != username)
+        return Unauthorized();
+
+       _challengeRepository.DeleteChallenge(challenge);
+      if (await _challengeRepository.SaveAllAsync()) return Ok();
+
+      return BadRequest("Problem deleting the challenge");
+
+    }
   }
 }
