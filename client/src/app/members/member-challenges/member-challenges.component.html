@@ -10,7 +10,6 @@
         <input name="challengeSport" [(ngModel)]="challengeSport" required type="text" class="form-control input-sm"
           placeholder="Sport">
         <input id="daTi" name="challengeEventDate" required [(ngModel)]="challengeEventDate" type="datetime-local"
-        min="2021-08-17T14:30"
           class="form-control input-sm">
         <div class="input-group-append">
           <button [disabled]="!challengeForm.valid" class="btn btn-primary" type="submit">Challenge
@@ -33,6 +32,7 @@
         <p class="col">Sport</p>
         <p class="col-4">Date of Event</p>
         <p class="col">Request sent</p>
+        <p class="col">Request sent</p>
       </div>
     </div>
     <ul *ngIf="challenges?.length > 0" class="list-group">
@@ -47,7 +47,15 @@
             <p class="col">{{challenge.sport}}</p>
             <p class="col-4">{{challenge.eventDate | date:'dd/MM/yyyy hh:mm a'}}</p>
             <p class="col"><span class="fa fa-clock-o">{{challenge.challengeSent | timeago}}</span></p>
-
+            <div class="col" *ngIf="challenge.answer === null">
+              Pending...
+            </div>
+            <div class="col" *ngIf="challenge.answer === true">
+              <p class="text-success">Accepted
+            </div>
+            <div class="col" *ngIf="challenge.answer === false">
+              <p class="text-danger">Declined</p>
+            </div>
           </div>
 
         </div>

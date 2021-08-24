@@ -40,7 +40,9 @@ export class MemberChallengesComponent implements OnInit {
       .subscribe(challenge => {
         this.challenges.push(challenge);
         this.challengeForm.reset();
+        this.loadChallenges();
       })
   }
+
 
 }

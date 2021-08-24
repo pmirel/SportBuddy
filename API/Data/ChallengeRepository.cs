@@ -29,7 +29,10 @@ namespace API.Data
 
     public async Task<Challenge> GetChallenge(int id)
     {
-      return await _context.Challenges.FindAsync(id);
+      return await _context.Challenges
+      .Include(u => u.Sender)
+      .Include(u => u.Recipient)
+      .SingleOrDefaultAsync(x => x.Id == id);
     }
 
     public async Task<PagedList<ChallengeDto>> GetChallengesForUser(ChallengeParams challengeParams)

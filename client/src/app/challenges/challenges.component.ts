@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { Challenge } from '../_models/challenge';
 import { Pagination } from '../_models/pagination';
 import { ChallengeService } from '../_services/challenge.service';
@@ -14,38 +15,48 @@ export class ChallengesComponent implements OnInit {
   container = "New";
   pageNumber = 1;
   pageSize = 5;
-  dropDownValue = "";
   selectedChallenge?: Challenge;
+  challenge: Challenge;
+  loading = false;
 
 
-  constructor(private challengeService: ChallengeService) { }
+  constructor(private challengeService: ChallengeService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.loadChallenges();
   }
 
   loadChallenges() {
+    this.loading = true;
     this.challengeService.getChallenges(this.pageNumber, this.pageSize, this.container).subscribe(response => {
       this.challenges = response.result;
       this.pagination = response.pagination;
+      this.loading = false;
     })
   }
   pageChanged(event: any) {
-    this.pageNumber = event.page;
-    this.loadChallenges();
+    if (this.pageNumber != event.page) {
+      this.pageNumber = event.page;
+      console.log(this.pageNumber);
+      this.loadChallenges();
+    }
   }
 
-  updateChallenge(event: any) {
-    console.log(this.challenges);
+  
+  updateChallenge(id: number, answer: boolean) {
+    var challenge ;
+    this.challenges.forEach(c => {
+      if(c.id = id){
+        challenge = c;
+      }
+    });
+    challenge.answer = answer;
+    this.challengeService.updateChallenge(challenge).subscribe(() => {
+      this.toastr.success('Challenge answered');
+      this.loadChallenges();
+    })
   }
 
 
-  SetDropDownValue(drpValue: any) {
-    this.dropDownValue = drpValue.target.value;
-  }
-
-  onSelect(challenge: Challenge) {
-    console.log(this.selectedChallenge = challenge);
-  }
 
 }

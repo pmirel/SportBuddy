@@ -72,22 +72,25 @@ namespace API.Controllers
       return Ok(await _challengeRepository.GetChallengeThread(currentUsername, username));
     }
 
-    //to check this
-    [HttpPut]
-    public async Task<ActionResult> UpdateChallenge(ChallengeUpdateDto challengeUpdateDto, int id)
+    
+
+    [HttpPut("{id}")]
+
+    public async Task<ActionResult> UpdateChallenge2(int id,ChallengeUpdateDto challengeUpdateDto)
     {
+
       var username = User.GetUsername();
       var challenge = await _challengeRepository.GetChallenge(id);
-      if (challenge.Sender.UserName != username && challenge.Recipient.UserName != username)
+      challenge.Answer = challengeUpdateDto.Answer;
+
+      if (challenge.Recipient.UserName != username)
         return Unauthorized();
-      _mapper.Map(challengeUpdateDto, challenge);
-      
-       _challengeRepository.UpdateChallenge(challenge);
-
+     
+      _challengeRepository.UpdateChallenge(challenge);
       if (await _challengeRepository.SaveAllAsync()) return Ok();
-
-      return BadRequest("Problem updating challenge");
-
+      return BadRequest("Failed to update challenge");
     }
+
+
   }
 }

@@ -10,3 +10,15 @@
   background-color: #18bc9c;
   
 }
+
+.btn-success {
+  background-color: green;
+  color:black;
+  box-shadow: none;
+}
+.btn-danger {
+  background-color: red;
+  color:black;
+  box-shadow: none;
+}
+

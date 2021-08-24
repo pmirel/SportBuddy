@@ -29,6 +29,7 @@ import { NumberInputComponent } from './_forms/number-input/number-input.compone
 import { MemberMessagesComponent } from './members/member-messages/member-messages.component';
 import { ChallengesComponent } from './challenges/challenges.component';
 import { MemberChallengesComponent } from './members/member-challenges/member-challenges.component';
+import { ChallengeEditComponent } from './challenge-edit/challenge-edit.component';
 
 
 
@@ -54,6 +55,7 @@ import { MemberChallengesComponent } from './members/member-challenges/member-ch
     MemberMessagesComponent,
     ChallengesComponent,
     MemberChallengesComponent,
+    ChallengeEditComponent,
 
   ],
   imports: [

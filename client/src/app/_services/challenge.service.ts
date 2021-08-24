@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Challenge } from '../_models/challenge';
 import { getPaginatedResult, getPaginationHeaders } from './paginationHelpers';
@@ -24,12 +25,18 @@ export class ChallengeService {
   }
 
   sendChallenge(username: string, location: string, sport: string, eventDate: Date){
-    return this.http.post<Challenge>(this.baseUrl+ 'challenges', {
+    return this.http.post<Challenge>(this.baseUrl + 'challenges', {
       recipientUsername: username,
       location,
       sport,
       eventDate
     })
+  }
+
+
+  updateChallenge(challenge: Challenge){
+    var id = challenge.id;
+    return this.http.put(this.baseUrl + 'challenges/' + id, challenge);
   }
 
 }
