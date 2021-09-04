@@ -4,7 +4,7 @@ export class UserParams {
   gender: string;
   sport: string;
   pageNumber = 1;
-  pageSize = 8;
+  pageSize = 4;
   orderBy = 'lastActive';
 
   constructor(user: User) {

@@ -60,6 +60,7 @@ export class RegisterComponent implements OnInit {
       this.router.navigateByUrl('/members');
     }, error => {
       this.validationErrors = error;
+      this.toastr.error(error.error);
     })
 
   }

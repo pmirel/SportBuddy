@@ -44,7 +44,7 @@ export class ChallengesComponent implements OnInit {
 
   
   updateChallenge(id: number, answer: boolean) {
-    var challenge ;
+    var challenge;
     this.challenges.forEach(c => {
       if(c.id = id){
         challenge = c;

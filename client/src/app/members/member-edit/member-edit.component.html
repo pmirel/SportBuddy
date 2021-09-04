@@ -16,13 +16,14 @@
           <strong>Info:</strong> You have changes. Unsaved changes will be lost
         </div>
       </div>
-      <h1>{{member.nickName}}</h1>
-      <h6><strong>Gender: </strong>{{member.gender}}</h6>
+      <h1>{{member.nickName | titlecase}}</h1>
+      <h6><strong>Username: </strong>{{member.username}}</h6>
+      <h6><strong>Gender: </strong>{{member.gender | titlecase}}</h6>
       <h6><strong>Age: </strong>{{member.age}}</h6>
       <h6><strong>Last time active: </strong>{{member.lastActive | timeago}}</h6>
       <h6><strong>User since: </strong>{{member.created | date}}</h6>
-      <h6><strong>Location: </strong>{{member.city}},{{member.country}}</h6>
-      <h6><strong>Sport played: </strong>{{member.sport}}</h6>
+      <h6><strong>Location: </strong>{{member.city}},{{member.country | titlecase}}</h6>
+      <h6><strong>Sport played: </strong>{{member.sport | titlecase}}</h6>
       <h6><strong>Experience playing: </strong>{{member.experience}}</h6>
     </div>
   </div>
@@ -34,7 +35,7 @@
           <input [(ngModel)]="member.city" type="text" name="city" class="form-control">
           <label for="country">Coutry:</label>
           <input [(ngModel)]="member.country" type="text" name="country" class="form-control">
-          <label for="sport">Sport plyed:</label>
+          <label for="sport">Sport played:</label>
           <input [(ngModel)]="member.sport" type="text" name="sport" class="form-control">
           <label for="experience">Experience:</label>
           <input [(ngModel)]="member.experience" type="number" name="experience" class="form-control">
